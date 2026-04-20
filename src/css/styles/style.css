@@ -12706,7 +12706,7 @@ a.read_more i {
 
 .switch {
   margin-bottom: -5px;
-  -webkit-appearance: none;
+  webkit-appearance: none;
   height: 24px;
   width: 44px;
   background-color: #eeeeee;
@@ -14406,6 +14406,30 @@ a.read_more i {
   animation: ripple 0.7s linear infinite;
 }
 
+.carousel__arrows button {
+  width: 35px;
+  height: 35px;
+  border-radius: 15%;
+  border: none;
+  background: #222;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #fff;
+  border: solid 1px #ddd;
+}
+
+.carousel__arrows {
+  display: flex;
+  justify-content: right;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+
+.font__arrows {
+  color: #ddd
+}
+
 @-webkit-keyframes ripple {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3),
@@ -15145,7 +15169,7 @@ a.btn-slider:hover {
   margin: 0 6px;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 
 .testi-slider .flex-control-paging li a {
