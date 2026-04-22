@@ -1,35 +1,39 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
+import React, { useEffect, useState } from "react";
+
 import axios from "axios";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import OwlCarousel from "react-owl-carousel";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import "owl.carousel/dist/assets/owl.carousel.css";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+
+
+import Skeleton from "../UI/Skeleton";
+
+import Aos from "aos";
+
+import "aos/dist/aos.css";
+
+Aos.init();
 
 const HotCollections = () => {
-  const [collection, setCollection] = useState([]);
-  const swiperRef = useRef(null);
+  const [hotCollections, setHotCollections] = useState([]);
 
-  async function fetchData() {
+  const [loading, setLoading] = useState(true);
+
+  async function fetchCollections() {
     const { data } = await axios.get(
       "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections",
     );
-    setCollection(data);
-    console.log(data);
+
+    setHotCollections(data);
+
+    setLoading(false);
   }
+
   useEffect(() => {
-    fetchData();
+    fetchCollections();
   }, []);
 
   return (
@@ -38,84 +42,86 @@ const HotCollections = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <div className="carousel__header">
-                <h2>Hot Collections</h2>
-                <div className="carousel__arrows">
-                  <button onClick={() => swiperRef.current.slidePrev()}>
-                    <FontAwesomeIcon
-                      className="font__arrows"
-                      icon={faChevronLeft}
-                    />
-                  </button>
-                  <button onClick={() => swiperRef.current.slideNext()}>
-                    <FontAwesomeIcon
-                      className="font__arrows"
-                      icon={faChevronRight}
-                    />
-                  </button>
-                </div>
-              </div>
+              <h2 data-aos="zoom-in" data-aos-duration="700">
+                Hot Collections
+              </h2>
 
-              <Swiper
-                modules={[Pagination, Autoplay]}
-                onSwiper={(swiper) => (swiperRef.current = swiper)}
-                spaceBetween={20}
-                slidesPerView={4}
-                navigation={false}
-                pagination={{ clickable: true }}
-                loop={true}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
-                breakpoints={{
-                  0: { slidesPerView: 1 },
-                  576: { slidesPerView: 2 },
-                  992: { slidesPerView: 3 },
-                  1200: { slidesPerView: 4 },
-                }}
-              >
-                {collection.slice(0, 6).map((item) => (
-                  <SwiperSlide key={item.id}>
-                    <div className="nft__item">
-                      <div className="author_list_pp">
-                        <Link to="/author">
-                          <img className="lazy" src={item.authorImage} alt="" />
-                          <i className="fa fa-check"></i>
-                        </Link>
-                      </div>
-                      <div className="de_countdown">5h 30m 32s</div>
-                      <div className="nft__item_wrap">
-                        <Link to="/item-details">
-                          <img
-                            src={item.nftImage}
-                            className="nft__item_preview"
-                            alt=""
-                          />
-                        </Link>
+              <div className="small-border bg-color-2"></div>
+            </div>
+          </div>
+
+          <OwlCarousel
+            className="owl-theme"
+            loop
+            data-aos="fade-up"
+            data-aos-duration="700"
+            nav
+            key={loading}
+            dots={false}
+            margin={8}
+            navText={["<", ">"]}
+            responsive={{
+              0: { items: 1 },
+
+              572: { items: 2 },
+
+              992: { items: 3 },
+
+              1200: { items: 4 },
+            }}
+          >
+            {loading ? (
+              <>
+                {new Array(5).fill(0).map((_, i) => (
+                  <div
+                    className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                    style={{ width: "100%", maxWidth: "100%", padding: "0" }}
+                    key={i}
+                  >
+                    <div className="nft_coll">
+                      <div className="nft_wrap">
+                        <Skeleton width="100%" height="200px" />
                       </div>
 
-                      <div className="nft__item_info">
-                        <Link to="/item-details">
-                          <h4>{item.title}</h4>
-                        </Link>
-                        <div className="nft__item_price">3.08 ETH</div>
-                        <div className="nft__item_like">
-                          <i className="fa fa-heart"></i>
-                          <span>{item.likes}</span>
-                        </div>
+                      <div className="nft_coll_pp">
+                        <Skeleton
+                          width="50px"
+                          height="50px"
+                          borderRadius="50%"
+                        />
+
+                        <i className="fa fa-check"></i>
+                      </div>
+
+                      <div className="nft_coll_info">
+                        <Skeleton width="100px" height="20px" />
+
+                        <br />
+
+                        <Skeleton width="60px" height="20px" />
                       </div>
                     </div>
-                  </SwiperSlide>
+                  </div>
                 ))}
-              </Swiper>
-            </div>
-          </div>{" "}
-          {/* col-lg-12 */}
-        </div>{" "}
-        {/* row */}
-      </div>{" "}
-      {/* container */}
+              </>
+            ) : (
+              <>
+                {hotCollections.map((collection, i) => (
+                  <HotCollection
+                    nftImage={collection.nftImage}
+                    authorImage={collection.authorImage}
+                    title={collection.title}
+                    code={collection.code}
+                    nftId={collection.nftId}
+                    authorId={collection.authorId}
+                    key={collection.id}
+                  />
+                ))}
+              </>
+            )}
+          </OwlCarousel>
+        </div>
+      </div>
     </section>
   );
 };
