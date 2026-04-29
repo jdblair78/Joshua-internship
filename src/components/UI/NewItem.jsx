@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-const HotCollections = ({
+const NewItems = ({
   nftImage,
   authorImage,
   title,
@@ -41,4 +41,4 @@ const HotCollections = ({
   );
 };
 
-export default HotCollections;
+export default NewItems;
