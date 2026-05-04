@@ -39,7 +39,6 @@ const NewItems = () => {
 
   function getTimeLeft() {
     const now = Date.now();
-    console.log(now);
   }
 
   function getTimeLeft(expiryDate) {
