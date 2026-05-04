@@ -45,10 +45,10 @@ const HotCollections = () => {
             modules={[Navigation, Autoplay]}
             navigation
             loop={true}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false, 
-            }}
+            // autoplay={{
+            //   delay: 3000,
+            //   disableOnInteraction: false, 
+            // }}
             spaceBetween={8}
             breakpoints={{
               0: { slidesPerView: 1 },
