@@ -13253,6 +13253,12 @@ a.read_more i {
   right: 5px;
 }
 
+.author_list .author_list_info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .author_list {
   -moz-column-count: 4;
   -moz-column-gap: 20px;
@@ -13260,11 +13266,17 @@ a.read_more i {
   -webkit-column-gap: 20px;
   column-count: 4;
   column-gap: 20px;
+  list-style: none;
+  padding-left: 0;
 }
 
 .author_list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 16px;
+  width: 100%;
 }
 
 .author_list_pp {
@@ -13322,6 +13334,9 @@ a.read_more i {
 }
 
 .author_list_info {
+  display: flex;
+  flex-direction: column;
+  gap:6px;
   font-weight: bold;
   padding-left: 70px;
 }
@@ -16683,6 +16698,14 @@ img {
     left: 0;
     top: -21px;
   }
+}
+
+
+.skeleton_list li {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .skeleton-box {

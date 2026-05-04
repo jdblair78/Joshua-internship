@@ -5,6 +5,8 @@ import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 
+import Skeleton from "../UI/Skeleton";
+
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -97,6 +99,7 @@ const NewItems = () => {
                       title="Creator: Monica Lucas"
                     >
                       <div className="lazy pp-item">
+                      
                         <a href="">
                           <img className="" src={item.authorImage} alt="" />
                         </a>
@@ -106,6 +109,7 @@ const NewItems = () => {
                   </div>
 
                   <div className="de_countdown">
+                   
                     {getTimeLeft(item.expiryDate)}
                   </div>
 
