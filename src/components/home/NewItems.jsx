@@ -92,24 +92,15 @@ const NewItems = () => {
               <SwiperSlide key={item.id}>
                 <div className="nft__item">
                   <div className="author_list_pp">
-                    <Link
-                      to="/author"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Creator: Monica Lucas"
-                    >
+                    <Link to={`/author/${item.authorId}`}>
                       <div className="lazy pp-item">
-                      
-                        <a href="">
-                          <img className="" src={item.authorImage} alt="" />
-                        </a>
+                        <img className="" src={item.authorImage} alt="" />
                         <i className="fa fa-check"></i>
                       </div>
                     </Link>
                   </div>
 
                   <div className="de_countdown">
-                   
                     {getTimeLeft(item.expiryDate)}
                   </div>
 
@@ -126,7 +117,7 @@ const NewItems = () => {
                       </a>
                     </div>
 
-                    <Link to="/item-details">
+                    <Link to={`/item-details/${item.id}`}>
                       <div className="nft_wrap">
                         <img className="img-fluid" src={item.nftImage} alt="" />
                       </div>
@@ -134,7 +125,7 @@ const NewItems = () => {
                   </div>
 
                   <div className="nft__item_info">
-                    <Link to="/item-details">
+                    <Link to={`/item-details/${item.id}`}>
                       <h4>{item.title}</h4>
                     </Link>
 

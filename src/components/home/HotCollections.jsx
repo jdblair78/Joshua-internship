@@ -14,18 +14,12 @@ const HotCollections = () => {
   const [loading, setLoading] = useState(true);
 
   async function fetchCollections() {
-    try {
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections"
       );
       setHotCollections(data);
-    } catch (error) {
-      console.error("Error fetching collections:", error);
-    } finally {
       setLoading(false);
-    }
   }
-
   useEffect(() => {
     fetchCollections();
   }, []);
@@ -45,10 +39,10 @@ const HotCollections = () => {
             modules={[Navigation, Autoplay]}
             navigation
             loop={true}
-            // autoplay={{
-            //   delay: 3000,
-            //   disableOnInteraction: false, 
-            // }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false, 
+            }}
             spaceBetween={8}
             breakpoints={{
               0: { slidesPerView: 1 },
