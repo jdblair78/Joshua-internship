@@ -5,6 +5,7 @@ import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 
+
 import Skeleton from "../UI/Skeleton";
 
 import "swiper/css";
@@ -16,16 +17,10 @@ const NewItems = () => {
   const [currentTime, setCurrentTime] = useState(Date.now());
 
   async function fetchNewItems() {
-    try {
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems",
       );
       setNewItems(data);
-    } catch (error) {
-      console.error("Error fetching new items:", error);
-    } finally {
-      setLoading(true);
-    }
   }
 
   useEffect(() => {
@@ -117,7 +112,7 @@ const NewItems = () => {
                       </a>
                     </div>
 
-                    <Link to={`/item-details/${item.id}`}>
+                    <Link to={`/item-details/${item.nftId}`}>
                       <div className="nft_wrap">
                         <img className="img-fluid" src={item.nftImage} alt="" />
                       </div>

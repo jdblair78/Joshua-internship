@@ -18,7 +18,6 @@ const ExploreItems = () => {
     );
 
     setTimeout(() => {
-      console.log(data);
       setExploreItems(data);
       setLoading(false);
     });

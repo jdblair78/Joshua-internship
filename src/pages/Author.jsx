@@ -10,7 +10,7 @@ const Author = () => {
   const{ id } = useParams()
   const [author, setAuthor] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [isFollowing, setIsFollowing] = useState(false)
+  const [isFollowing, setIsFollowing] = useState(true)
   const [followers, setFollowers] = useState(0)
 
   async function fetchAuthor() {
