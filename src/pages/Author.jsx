@@ -17,8 +17,8 @@ const Author = () => {
     const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${id}`)
 
     setAuthor(data)
-    setLoading(false)
     setFollowers(data.followers)
+    setLoading(false)
   }
 
    useEffect(() => {

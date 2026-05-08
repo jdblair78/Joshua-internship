@@ -5,20 +5,20 @@ const AuthorSkeleton = () => {
     <div className="de-flex-col">
       <div className="profile_avatar">
         <div
+          className="skeleton-box"
           style={{
             width: "150px",
             height: "150px",
             borderRadius: "50%",
-            background: "#ddd",
           }}
         ></div>
 
         <div
+          className="skeleton-box"
           style={{
             width: "35px",
             height: "35px",
             borderRadius: "50%",
-            background: "#ddd",
             position: "absolute",
             left: "120px",
             bottom: "5px",
@@ -28,10 +28,10 @@ const AuthorSkeleton = () => {
         <div className="profile_name">
           <h4>
             <div
+              className="skeleton-box"
               style={{
                 width: "140px",
                 height: "24px",
-                background: "#ddd",
                 borderRadius: "4px",
                 marginBottom: "12px",
               }}
@@ -39,10 +39,10 @@ const AuthorSkeleton = () => {
 
             <span className="profile_username">
               <div
+                className="skeleton-box"
                 style={{
                   width: "90px",
                   height: "16px",
-                  background: "#ddd",
                   borderRadius: "4px",
                   marginBottom: "12px",
                 }}
@@ -51,10 +51,10 @@ const AuthorSkeleton = () => {
 
             <span className="profile_wallet">
               <div
+                className="skeleton-box"
                 style={{
                   width: "220px",
                   height: "16px",
-                  background: "#ddd",
                   borderRadius: "4px",
                 }}
               ></div>

@@ -14,18 +14,23 @@ const HotCollections = () => {
   const [loading, setLoading] = useState(true);
 
   async function fetchCollections() {
-      const { data } = await axios.get(
-        "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections"
-      );
-      setHotCollections(data);
-      setLoading(false);
+    const { data } = await axios.get(
+      "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections",
+    );
+    setHotCollections(data);
+    setLoading(false);
   }
   useEffect(() => {
     fetchCollections();
   }, []);
 
   return (
-    <section id="section-collections" className="no-bottom">
+    <section
+      id="section-collections"
+      className="no-bottom"
+      data-aos="fade-up"
+      data-aos-duration="3000"
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
@@ -41,7 +46,7 @@ const HotCollections = () => {
             loop={true}
             autoplay={{
               delay: 3000,
-              disableOnInteraction: false, 
+              disableOnInteraction: false,
             }}
             spaceBetween={8}
             breakpoints={{
@@ -96,4 +101,3 @@ const HotCollections = () => {
 };
 
 export default HotCollections;
-

@@ -4,10 +4,7 @@ import axios from "axios";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-
-
 import Skeleton from "../UI/Skeleton";
-
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -17,10 +14,11 @@ const NewItems = () => {
   const [currentTime, setCurrentTime] = useState(Date.now());
 
   async function fetchNewItems() {
-      const { data } = await axios.get(
-        "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems",
-      );
-      setNewItems(data);
+    const { data } = await axios.get(
+      "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems",
+    );
+    setNewItems(data);
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -34,9 +32,6 @@ const NewItems = () => {
     return () => clearInterval(interval);
   }, []);
 
-  function getTimeLeft() {
-    const now = Date.now();
-  }
 
   function getTimeLeft(expiryDate) {
     const now = new Date().getTime();
@@ -57,7 +52,12 @@ const NewItems = () => {
   }
 
   return (
-    <section id="section-items" className="no-bottom">
+    <section
+      id="section-items"
+      className="no-bottom"
+      data-aos="fade-up"
+      data-aos-duration="3000"
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
@@ -70,11 +70,11 @@ const NewItems = () => {
           <Swiper
             modules={[Navigation, Autoplay]}
             navigation
-            loop={true}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
+            loop={false}
+            // autoplay={{
+            //   delay: 3000,
+            //   disableOnInteraction: false,
+            // }}
             spaceBetween={16}
             breakpoints={{
               0: { slidesPerView: 1 },
@@ -83,12 +83,44 @@ const NewItems = () => {
               1200: { slidesPerView: 4 },
             }}
           >
-            {newItems.map((item) => (
+{loading
+  ? new Array(5).fill(0).map((_, i) => (
+      <SwiperSlide key={i}>
+        <div className="nft__item">
+          <div className="author_list_pp">
+            <Skeleton width="50px" height="50px" borderRadius="50%" />
+          </div>
+
+          <div className="de_countdown">
+            <Skeleton width="80px" height="20px" />
+          </div>
+
+          <div className="nft__item_wrap">
+            <div className="nft_wrap">
+              <Skeleton width="100%" height="200px" borderRadius="8px" />
+            </div>
+          </div>
+
+          <div className="nft__item_info">
+            <Skeleton width="120px" height="20px" />
+            <br />
+            <Skeleton width="80px" height="20px" />
+          </div>
+
+          <div className="nft__item_like">
+            <Skeleton width="50px" height="20px" />
+          </div>
+        </div>
+      </SwiperSlide>
+    ))
+:
+            newItems.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="nft__item">
                   <div className="author_list_pp">
                     <Link to={`/author/${item.authorId}`}>
                       <div className="lazy pp-item">
+                        
                         <img className="" src={item.authorImage} alt="" />
                         <i className="fa fa-check"></i>
                       </div>
