@@ -24,6 +24,8 @@ const HotCollections = () => {
     fetchCollections();
   }, []);
 
+// Any Comment
+
   return (
     <section
       id="section-collections"
