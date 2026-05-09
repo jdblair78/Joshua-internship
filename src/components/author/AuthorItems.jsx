@@ -22,7 +22,7 @@ const AuthorItems = () => {
 
   
     fetchAuthorItems();
-  }, []);
+  }, [id]);
 
   return (
     <div className="de_tab_content">
