@@ -94,7 +94,7 @@ const ExploreItems = () => {
             >
               <div className="nft__item">
                 <div className="author_list_pp">
-                  <Link to={`/author/${item.id}`}>
+                  <Link to={`/author/${item.nftId}`}>
                     <img className="lazy" src={item.authorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
@@ -128,7 +128,7 @@ const ExploreItems = () => {
                       </div>
                     </div>
                   </div>
-                  <Link to={`/item-details/${item.id}`}>
+                  <Link to={`/item-details/${item.nftId}`}>
                     <img
                       src={item.nftImage}
                       className="lazy nft__item_preview"
@@ -137,7 +137,7 @@ const ExploreItems = () => {
                   </Link>
                 </div>
                 <div className="nft__item_info">
-                  <Link to={`/item-details/${item.id}`}>
+                  <Link to={`/item-details/${item.nftId}`}>
                     <h4>{item.title}</h4>
                   </Link>
                   <div className="nft__item_price">{item.price}</div>

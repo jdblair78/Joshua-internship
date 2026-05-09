@@ -118,7 +118,7 @@ const NewItems = () => {
               <SwiperSlide key={item.id}>
                 <div className="nft__item">
                   <div className="author_list_pp">
-                    <Link to={`/author/${item.authorId}`}>
+                    <Link to={`/author/${item.nftId}`}>
                       <div className="lazy pp-item">
                         
                         <img className="" src={item.authorImage} alt="" />
@@ -152,7 +152,7 @@ const NewItems = () => {
                   </div>
 
                   <div className="nft__item_info">
-                    <Link to={`/item-details/${item.id}`}>
+                    <Link to={`/item-details/${item.nftid}`}>
                       <h4>{item.title}</h4>
                     </Link>
 
