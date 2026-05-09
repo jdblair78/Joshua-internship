@@ -9,6 +9,7 @@ const ExploreItems = () => {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
   const [, setCurrentTime] = useState(Date.now());
+
   async function fetchExploreItems() {
     const { data } = await axios.get(
       "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
@@ -149,12 +150,14 @@ const ExploreItems = () => {
             </div>
           ))}
       <div className="col-md-12 text-center">
+        {visibleCount < sortedItems.length && (
         <button
           className="btn-main lead"
           onClick={() => setVisibleCount((prev) => prev + 4)}
         >
           Load more
         </button>
+        )}
       </div>
     </>
   );
