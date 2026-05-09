@@ -12,6 +12,7 @@ const Author = () => {
   const [isFollowing, setIsFollowing] = useState(true)
   const [followers, setFollowers] = useState(0)
 
+  useEffect(() => {
   async function fetchAuthor() {
     const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${id}`)
 
@@ -20,9 +21,9 @@ const Author = () => {
     setLoading(false)
   }
 
-   useEffect(() => {
+   
       fetchAuthor();
-    }, []);
+    }, [id]);
 
     function toggleFollow() {
   if (isFollowing) {

@@ -8,8 +8,7 @@ const ExploreItems = () => {
   const [visibleCount, setVisibleCount] = useState(8);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
-  const [currentTime, setCurrentTime] = useState([])
-
+  const [, setCurrentTime] = useState(Date.now());
   async function fetchExploreItems() {
     const { data } = await axios.get(
       "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",

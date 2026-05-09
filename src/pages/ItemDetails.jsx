@@ -10,6 +10,7 @@ const ItemDetails = () => {
   const [itemDetails, setItemDetails] = useState(null);
   const [loading, setLoading] = useState(true)
 
+  useEffect(() => {
   async function fetchItemDetails() {
     const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${id}`);
 
@@ -17,7 +18,6 @@ const ItemDetails = () => {
     setLoading(false)
   }
 
-useEffect(() => {
   fetchItemDetails();
 }, [id]);
 
