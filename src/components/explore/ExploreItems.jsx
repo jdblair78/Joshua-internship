@@ -8,6 +8,7 @@ const ExploreItems = () => {
   const [visibleCount, setVisibleCount] = useState(8);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
+  const [currentTime, setCurrentTime] = useState([])
 
   async function fetchExploreItems() {
     const { data } = await axios.get(
