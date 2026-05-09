@@ -20,6 +20,10 @@ const Author = () => {
     setLoading(false)
   }
 
+   useEffect(() => {
+      fetchAuthor();
+    }, []);
+
     function toggleFollow() {
   if (isFollowing) {
     setFollowers((prev) => prev - 1);
