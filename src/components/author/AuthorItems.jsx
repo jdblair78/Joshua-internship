@@ -22,6 +22,7 @@ const AuthorItems = () => {
   useEffect(() => {
     fetchAuthorItems();
   }, []);
+  
   return (
     <div className="de_tab_content">
       <div className="tab-1">

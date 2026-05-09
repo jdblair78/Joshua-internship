@@ -11,7 +11,6 @@ import "swiper/css/navigation";
 const NewItems = () => {
   const [newItems, setNewItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentTime, setCurrentTime] = useState(Date.now());
 
   async function fetchNewItems() {
     const { data } = await axios.get(

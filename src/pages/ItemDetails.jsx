@@ -17,20 +17,9 @@ const ItemDetails = () => {
     setLoading(false)
   }
 
-
-
-
-  useEffect(() => {
-    fetchItemDetails();
-    window.scrollTo(0, 0);
-  }, [id]);
- 
  if (!itemDetails) {
   return <NewDetailsSkeleton />;
 }
-
-
-
   const item = itemDetails;
 
     return (

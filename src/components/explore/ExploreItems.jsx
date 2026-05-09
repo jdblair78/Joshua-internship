@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
 
 const ExploreItems = () => {
   const [exploreItems, setExploreItems] = useState([]);
-  const [currentTime, setCurrentTime] = useState(Date.now());
   const [visibleCount, setVisibleCount] = useState(8);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
@@ -38,10 +35,6 @@ const ExploreItems = () => {
     }
     return 0;
   });
-
-  function getTimeLeft() {
-    const now = Date.now();
-  }
 
   function getTimeLeft(expiryDate) {
     const now = new Date().getTime();
