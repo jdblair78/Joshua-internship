@@ -9,6 +9,7 @@ const AuthorItems = () => {
   const [authorImage, setAuthorImage] = useState("");
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
   async function fetchAuthorItems() {
     const { data } = await axios.get(
       `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${id}`,
@@ -19,10 +20,10 @@ const AuthorItems = () => {
     setLoading(false);
   }
 
-  useEffect(() => {
+  
     fetchAuthorItems();
   }, []);
-  
+
   return (
     <div className="de_tab_content">
       <div className="tab-1">
