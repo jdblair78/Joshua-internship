@@ -13634,7 +13634,6 @@ a.read_more i {
   margin: 0 auto;
   top: 180px;
   left: 125px;
-  margin-inline: calc(50% * max-width);
   position: relative;
 }
 
