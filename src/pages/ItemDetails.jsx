@@ -17,6 +17,10 @@ const ItemDetails = () => {
     setLoading(false)
   }
 
+useEffect(() => {
+  fetchItemDetails();
+}, [id]);
+
  if (!itemDetails) {
   return <NewDetailsSkeleton />;
 }
