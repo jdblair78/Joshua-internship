@@ -13737,6 +13737,7 @@ a.read_more i {
 }
 
 .nft__item_like {
+  position: absolute;
   right: 8px;
   bottom: 22px;
   font-size: 14px;

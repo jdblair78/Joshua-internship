@@ -39,7 +39,7 @@ const NewItems = () => {
     const difference = expiry - now;
 
     if (difference <= 0) {
-      return "00:00:00";
+      return null;
     }
 
     const hours = Math.floor(difference / (1000 * 60 * 60));
@@ -126,11 +126,13 @@ const NewItems = () => {
                       </div>
                     </Link>
                   </div>
-
+                  
+                    {getTimeLeft(item.expiryDate) && (
                   <div className="de_countdown">
                     {getTimeLeft(item.expiryDate)}
                   </div>
-
+                    )}
+                  
                   <div className="nft__item_wrap">
                     <div className="nft__item_extra">
                       <a href="/" target="_blank" rel="noreferrer">
