@@ -16792,6 +16792,7 @@ img {
 }
 
 .connect-wallet {
+  cursor: not-allowed;
   margin-left: 18px;
   color: white !important;
 }
